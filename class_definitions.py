@@ -82,6 +82,7 @@ class Tile:
             self.house_cost = house_cost
             self.currently_monopolied = currently_monopolied
 
+
     def calculate_rent(self, last_roll=7):
         if self.tile_type == 1: #if the tile is as normal property:
             if self.currently_monopolied:
