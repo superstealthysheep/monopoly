@@ -96,13 +96,3 @@ class Tile:
             return self.rent_array[self.rent_level]
         elif self.tile_type == 3: #if the tile is a utility
             return self.rent_array[self.rent_level] * last_roll
-
-
-def set_up_game():
-    with open("board_state.csv") as f:
-        reader = csv.reader(f)
-        line_number = 0
-        for row in reader:
-            if line_number != 0:
-                board.append(Tile(*row)) #the * unpacks the row array into all the arguments that Tile needs
-            line_number += 1
