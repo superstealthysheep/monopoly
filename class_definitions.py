@@ -82,6 +82,7 @@ class Tile:
             self.house_cost = house_cost
             self.currently_monopolied = currently_monopolied
 
+
     def calculate_rent(self, last_roll=7):
         if self.tile_type == 1: #if the tile is as normal property:
             if self.currently_monopolied:
@@ -105,8 +106,3 @@ def set_up_game():
             if line_number != 0:
                 board.append(Tile(*row)) #the * unpacks the row array into all the arguments that Tile needs
             line_number += 1
-
-def run_game():
-    board = []
-    set_up_game()
-    #next, initialize players and set positions

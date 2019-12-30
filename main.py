@@ -1,7 +1,10 @@
 import csv
 from ClassDefinitions import *
 
-
+def run_game():
+    board = []
+    set_up_game()
+    #next, initialize players and set positions
 
 char = Character()
 other_char = Character()
