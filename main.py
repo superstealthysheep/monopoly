@@ -1,6 +1,5 @@
 from class_definitions import *
 
-def run_game():
 def read_board(board_file):
     board = []
     with open(board_file) as f:
@@ -30,3 +29,7 @@ print(tile1.name)
 tile1.name = "bop"
 print(tile1.name)
 print(tile1.calculate_rent())
+
+print(tile1)
+
+run_game()
