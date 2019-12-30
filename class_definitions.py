@@ -118,17 +118,17 @@ def pay(amount, sender, recipient): #function for players but outside class
 class Tile:
     row_array_order = ["location", "name", "tile_type", "monopoly_group", "price", "rent0", "rent1", "rent2", "rent3", "rent4", "rent5", "mortgage_value", "house_cost", "currently_monopolied"] #the order that the properties occur in the spreadsheet row
     def __init__(self, location, name, tile_type, monopoly_group, owner=-1, price=10, rent_level=0, rent0=10, rent1=40, rent2=60, rent3=80, rent4=100, rent5=120, mortgage_value=5, house_cost=10, currently_monopolied=False):
-            self.location = location ##BODGE
+            self.location = int(location) ##BODGE
             self.name = name
-            self.tile_type = tile_type
+            self.tile_type = int(tile_type)
             self.monopoly_group = monopoly_group
             self.owner = owner
-            self.price = price
-            self.rent_level = rent_level
-            self.rent_array = [rent0, rent1, rent2, rent3, rent4, rent5]
-            self.mortgage_value = mortgage_value
-            self.house_cost = house_cost
-            self.currently_monopolied = currently_monopolied
+            self.price = int(price)
+            self.rent_level = int(rent_level)
+            self.rent_array = array[int(rent0), int(rent1), int(rent2), int(rent3), int(rent4), int(rent5)]
+            self.mortgage_value = int(mortgage_value)
+            self.house_cost = int(house_cost)
+            self.currently_monopolied = bool(currently_monopolied)
 
     def __repr__(self):
         return ("Tile object with " +
