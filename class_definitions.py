@@ -120,6 +120,9 @@ class Tile:
                 "house_cost: {}, " +
                 "currently_monopolied: {}").format(self.location, self.name, self.tile_type, self.monopoly_group, self.owner, self.price, self.rent_level, self.rent_array[0], self.rent_array[1], self.rent_array[2], self.rent_array[3], self.rent_array[4], self.rent_array[5], self.mortgage_value, self.house_cost, self.currently_monopolied)
 
+    def __str__(self):
+        return "{} (#{})".format(self.name, self.location)
+
     def calculate_rent(self, last_roll=7):
         if self.tile_type == 1: #if the tile is as normal property:
             if self.currently_monopolied:
