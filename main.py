@@ -17,12 +17,17 @@ def run_game():
     p0 = Player()
     p1 = Player()
     p2 = Player()
+    t1 = Tile(70, "Bep Lane", 1, "Shrek green")
     players = [p0, p1, p2]
+    print(t1)
+    print(board[0])
     print(str(Player.num_players) + " players")
     #next, initialize players and set position
-    for turn in range(0, 20):
+    for turn in range(0, 1):
         for current_player in players:
-            print(current_player + "'s turn'")
+            print(str(current_player) + "'s turn'")
+            current_player.move(current_player.roll())
+            print("{} is at {}".format(current_player.name, current_player.location))
 
 
 run_game()
