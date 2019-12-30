@@ -14,10 +14,11 @@ def read_board(board_file):
 def run_game():
     board = read_board("board_state.csv")
     print(board)
+    p0 = Player()
     p1 = Player()
     p2 = Player()
-    p3 = Player()
-    players = [p1, p2, p3]
+    players = [p0, p1, p2]
+    print(str(Player.num_players) + " players")
     #next, initialize players and set position
     for turn in range(0, 20):
         for current_player in players:
