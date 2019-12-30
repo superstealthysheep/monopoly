@@ -19,6 +19,15 @@ class Character:
         self.time_in_jail = -1
         self.last_roll = 0
 
+    def __repr__(self):
+        return ("Player object with " +
+                "Location: {}, " +
+                "Money: {}, " +
+                "Deeds: {}, " +
+                "Num_doubles: {}, " +
+                "Time_in_jail: {}, " +
+                "Last_roll: {}").format(self.location, self.money, self.deeds, self.num_doubles, self.time_in_jail, self.last_roll)
+
     def roll(self, num_dice=DEF_NUM_DICE, size_dice=DEF_SIZE_DICE):
         sum = 0
         for i in range(num_dice):
