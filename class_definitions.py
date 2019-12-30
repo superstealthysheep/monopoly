@@ -14,19 +14,23 @@ class MyExcept(Exception):
 class Player:
     num_players = 0
 
-    def __init__(self, location=0, name=num_players, money=1500, deeds=[], num_doubles=0, time_in_jail=0, last_roll=0):
+    def __init__(self, name="###EMPTY###", location=0, money=1500, deeds=[], num_doubles=0, time_in_jail=0, last_roll=0):
         self.name = name
+        if name == "###EMPTY###": #If a name isn't entered, default to "Player [Player Number]" (this feels like a BODGE though)
+            self.name = "Player {}".format(Player.num_players)
         self.location = location
         self.money = money
         self.deeds = deeds
         self.num_doubles = num_doubles #Keeps track of num of consecutive doubles
         self.time_in_jail = time_in_jail
         self.last_roll = last_roll
-        num_players += 1
+
+        Player.num_players += 1
+
 
     def __repr__(self):
         return ("Player object with " +
-                "name: {}" +
+                "name: {}, " +
                 "location: {}, " +
                 "money: {}, " +
                 "deeds: {}, " +
