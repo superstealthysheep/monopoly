@@ -105,8 +105,3 @@ def set_up_game():
             if line_number != 0:
                 board.append(Tile(*row)) #the * unpacks the row array into all the arguments that Tile needs
             line_number += 1
-
-def run_game():
-    board = []
-    set_up_game()
-    #next, initialize players and set positions
