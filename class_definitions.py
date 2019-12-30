@@ -83,9 +83,9 @@ class Player:
         elif property.owner != -1:
             print("Property already owned")
             raise MyExcept("Property already owned")
-        elif property.property_type not in [1, 2, 3]:
-            print("Property type not purchasable")
-            raise MyExcept("Property type not purchasable")
+        elif property.tile_type not in [1, 2, 3]:
+            print("Tile type not purchasable")
+            raise MyExcept("Tile type not purchasable")
         else:
             self.money -= property.price
             property.owner = self
@@ -96,9 +96,9 @@ class Player:
         spot = board[self.location]
         if spot.tile_type != 0:
             if spot.owner == -1:
-                print("Would you like to buy %s for $%d? (y/n)" % (spot.name, spot.price))
-                player_response = input()
-                if player_response != 'n':
+                print("aaa")
+                player_response = input("Would you like to buy {} for ${}? (Y/n) ".format(spot.name, spot.price))
+                if player_response.lower() != 'n':
                     self.purchase_property(spot)
             else:
                 pay(spot.calculate_rent(self.last_roll), self, spot.owner)
@@ -127,10 +127,10 @@ class Tile:
             self.name = name
             self.tile_type = int(tile_type)
             self.monopoly_group = monopoly_group
-            self.owner = owner
+            self.owner = int(owner)
             self.price = int(price)
             self.rent_level = int(rent_level)
-            self.rent_array = array[int(rent0), int(rent1), int(rent2), int(rent3), int(rent4), int(rent5)]
+            self.rent_list = [int(rent0), int(rent1), int(rent2), int(rent3), int(rent4), int(rent5)]
             self.mortgage_value = int(mortgage_value)
             self.house_cost = int(house_cost)
             self.currently_monopolied = bool(currently_monopolied)
@@ -152,7 +152,7 @@ class Tile:
                 "rent5: {}, " +
                 "mortgage_value: {}, " +
                 "house_cost: {}, " +
-                "currently_monopolied: {}").format(self.location, self.name, self.tile_type, self.monopoly_group, self.owner, self.price, self.rent_level, self.rent_array[0], self.rent_array[1], self.rent_array[2], self.rent_array[3], self.rent_array[4], self.rent_array[5], self.mortgage_value, self.house_cost, self.currently_monopolied)
+                "currently_monopolied: {}").format(self.location, self.name, self.tile_type, self.monopoly_group, self.owner, self.price, self.rent_level, self.rent_list[0], self.rent_list[1], self.rent_list[2], self.rent_list[3], self.rent_list[4], self.rent_list[5], self.mortgage_value, self.house_cost, self.currently_monopolied)
 
     def __str__(self):
         return "{} (#{})".format(self.name, self.location)
@@ -161,12 +161,12 @@ class Tile:
         if self.tile_type == 1: #if the tile is as normal property:
             if self.currently_monopolied:
                 if self.rent_level == 0:
-                    return self.rent_array[0] * 2
+                    return self.rent_list[0] * 2
                 else:
-                    return rent_array[rent_level]
+                    return rent_list[rent_level]
             else: #if there isn't a monopoly
-                return self.rent_array[0]
+                return self.rent_list[0]
         elif self.tile_type == 2: #if the tile is a railroad
-            return self.rent_array[self.rent_level]
+            return self.rent_list[self.rent_level]
         elif self.tile_type == 3: #if the tile is a utility
-            return self.rent_array[self.rent_level] * last_roll
+            return self.rent_list[self.rent_level] * last_roll
