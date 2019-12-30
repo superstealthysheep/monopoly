@@ -81,6 +81,12 @@ class Player:
         if self.money < property.price:
             print ("notenoughdollabills purpropfunc")
             raise MyExcept("Not enough dolla dolla purpropfunc")
+        elif property.owner != -1:
+            print("Property already owned")
+            raise MyExcept("Property already owned")
+        elif property.property_type not in [1, 2, 3]:
+            print("Property type not purchasable")
+            raise MyExcept("Property type not purchasable")
         else:
             self.money -= property.price
             property.owner = self
