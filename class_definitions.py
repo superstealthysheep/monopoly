@@ -83,6 +83,24 @@ class Tile:
             self.house_cost = house_cost
             self.currently_monopolied = currently_monopolied
 
+    def __repr__(self):
+        return ("Tile object with " +
+                "location: {}, " +
+                "name: {}, " +
+                "tile_type: {}, " +
+                "monopoly_group: {}, " +
+                "owner: {}, " +
+                "price: {}, " +
+                "rent_level: {}, " +
+                "rent0: {}, " +
+                "rent1: {}, " +
+                "rent2: {}, " +
+                "rent3: {}, " +
+                "rent4: {}, " +
+                "rent5: {}, " +
+                "mortgage_value: {}, " +
+                "house_cost: {}, " +
+                "currently_monopolied: {}").format(self.location, self.name, self.tile_type, self.monopoly_group, self.owner, self.price, self.rent_level, self.rent_array[0], self.rent_array[1], self.rent_array[2], self.rent_array[3], self.rent_array[4], self.rent_array[5], self.mortgage_value, self.house_cost, self.currently_monopolied)
 
     def calculate_rent(self, last_roll=7):
         if self.tile_type == 1: #if the tile is as normal property:
