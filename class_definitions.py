@@ -1,3 +1,4 @@
+import csv
 import random
 DEF_NUM_DICE = 2
 DEF_SIZE_DICE = 6

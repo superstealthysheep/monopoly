@@ -1,4 +1,3 @@
-import csv
 from class_definitions import *
 
 def run_game():
