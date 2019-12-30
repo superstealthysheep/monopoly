@@ -11,7 +11,7 @@ class MyExcept(Exception):
     def __str__(self):
         return repr(self.value)
 
-class Chance: #type 0 means pay, type 1 means jump, type 2 means move
+class Card: #type 0 means pay, type 1 means jump, type 2 means move
     def __init__(self, type, value, source, target):
         if type == 0:
             #payment card: pay value from Player source to Player target
