@@ -11,14 +11,14 @@ class MyExcept(Exception):
     def __str__(self):
         return repr(self.value)
 
-class Character:
-    def __init__(self):
-        self.location = 0
-        self.money = 1500
-        self.deeds = []
-        self.num_doubles = 0 #Keeps track of num of consecutive doubles
-        self.time_in_jail = -1
-        self.last_roll = 0
+class Player:
+    def __init__(self, location=0, money=1500, deeds=[], num_doubles=0, time_in_jail=0, last_roll=0):
+        self.location = location
+        self.money = money
+        self.deeds = deeds
+        self.num_doubles = num_doubles #Keeps track of num of consecutive doubles
+        self.time_in_jail = time_in_jail
+        self.last_roll = last_roll
 
     def roll(self, num_dice=DEF_NUM_DICE, size_dice=DEF_SIZE_DICE):
         sum = 0
@@ -55,8 +55,8 @@ class Character:
         if spot.tile_type != 0:
             if spot.owner == -1:
                 print("Would you like to buy %s for $%d? (y/n)" % (spot.name, spot.price))
-                char_response = input()
-                if char_response != 'n':
+                player_response = input()
+                if player_response != 'n':
                     self.purchase_property(spot)
             else:
                 pay(spot.calculate_rent(self.last_roll), spot.owner)

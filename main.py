@@ -16,11 +16,11 @@ def run_game():
     print(board)
     #next, initialize players and set positions
 
-char = Character()
-other_char = Character()
+player1 = Player()
+player2 = Player()
 for i in range(20):
-    char.move(char.roll())
-#char.pay(1501,other_char)
+    player1.move(player1.roll())
+#player1.pay(1501,player2)
 print("Would you like to buy %s for $%d" % ("hi", 2))
 
 
