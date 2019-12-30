@@ -28,7 +28,6 @@ class Character:
 
     def move(self, roll_value):
         self.location = (self.location + roll_value) % BOARD_SIZE
-        print(self.location)
 
     def pay(self, amount, recipient):
         if self.money < amount:
@@ -44,6 +43,7 @@ class Character:
         else:
             self.money -= property.price
             property.owner = self
+            self.deeds.append(property)
 
     def turn_dispatcher(self, board):
         #at the end of the function prompt the player for options. use flags to set legal moves
