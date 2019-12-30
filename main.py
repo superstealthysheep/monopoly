@@ -1,5 +1,5 @@
 import csv
-from ClassDefinitions import *
+from class_definitions import *
 
 def run_game():
     board = []
