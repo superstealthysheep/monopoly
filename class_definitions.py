@@ -11,6 +11,31 @@ class MyExcept(Exception):
     def __str__(self):
         return repr(self.value)
 
+class Chance: #type 0 means pay, type 1 means jump, type 2 means move
+    def __init__(self, type, value, source, target):
+        if type == 0:
+            #payment card: pay value from Player source to Player target
+            if type(target) != list: #convert to a one-element list to make code easier
+                target = [target]
+            if value < 0:
+                value = -value
+                for item in targets:
+                    pay(value, item, source)
+            else:
+                for item in targets:
+                    pay(value, source, item)
+
+        if type == 1:
+            #jump card: move Player source from current tile to Tile target. If tile is owned, the rent is multiplied by Int value
+                move_val = target.location -  source.location
+                if target.location < source.location:
+                    move_val += BOARD_SIZE
+                source.move(move_val)
+
+        if type == 2:
+            #move card: move Player source Int value.
+            source.move(value)
+
 class Player:
     num_players = 0
 
@@ -43,7 +68,7 @@ class Player:
 
     def move(self, roll_value):
         new_location = self.location + roll_value #but this could be over the size of the board
-        go_passes = new_location // BOARD_SIZE
+        go_passes = max(new_location // BOARD_SIZE, 0)
         self.money += GO_PASS_MONEY * go_passes
         self.location = new_location % BOARD_SIZE
         print(self.location)
