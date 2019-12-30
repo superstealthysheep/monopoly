@@ -28,11 +28,15 @@ class Player:
         return sum
 
     def move(self, roll_value):
+<<<<<<< HEAD
         new_location = self.location + roll_value #but this could be over the size of the board
         go_passes = new_location // BOARD_SIZE
         self.money += GO_PASS_MONEY * go_passes
         self.location = new_location % BOARD_SIZE
         print(self.location)
+=======
+        self.location = (self.location + roll_value) % BOARD_SIZE
+>>>>>>> c5e520531f6cdc445fc8d8d5dc783a89fe82a035
 
     def pay(self, amount, recipient):
         if self.money < amount:
@@ -48,6 +52,7 @@ class Player:
         else:
             self.money -= property.price
             property.owner = self
+            self.deeds.append(property)
 
     def turn_dispatcher(self, board):
         #at the end of the function prompt the player for options. use flags to set legal moves
