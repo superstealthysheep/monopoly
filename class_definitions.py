@@ -3,6 +3,7 @@ import random
 DEF_NUM_DICE = 2
 DEF_SIZE_DICE = 6
 BOARD_SIZE = 40
+GO_PASS_MONEY = 200
 
 class MyExcept(Exception):
     def __init__(self, value):
@@ -10,14 +11,14 @@ class MyExcept(Exception):
     def __str__(self):
         return repr(self.value)
 
-class Character:
-    def __init__(self):
-        self.location = 0
-        self.money = 1500
-        self.deeds = []
-        self.num_doubles = 0 #Keeps track of num of consecutive doubles
-        self.time_in_jail = -1
-        self.last_roll = 0
+class Player:
+    def __init__(self, location=0, money=1500, deeds=[], num_doubles=0, time_in_jail=0, last_roll=0):
+        self.location = location
+        self.money = money
+        self.deeds = deeds
+        self.num_doubles = num_doubles #Keeps track of num of consecutive doubles
+        self.time_in_jail = time_in_jail
+        self.last_roll = last_roll
 
     def __repr__(self):
         return ("Player object with " +
@@ -36,7 +37,11 @@ class Character:
         return sum
 
     def move(self, roll_value):
-        self.location = (self.location + roll_value) % BOARD_SIZE
+        new_location = self.location + roll_value #but this could be over the size of the board
+        go_passes = new_location // BOARD_SIZE
+        self.money += GO_PASS_MONEY * go_passes
+        self.location = new_location % BOARD_SIZE
+        print(self.location)
 
     def pay(self, amount, recipient):
         if self.money < amount:
@@ -60,8 +65,8 @@ class Character:
         if spot.tile_type != 0:
             if spot.owner == -1:
                 print("Would you like to buy %s for $%d? (y/n)" % (spot.name, spot.price))
-                char_response = input()
-                if char_response != 'n':
+                player_response = input()
+                if player_response != 'n':
                     self.purchase_property(spot)
             else:
                 pay(spot.calculate_rent(self.last_roll), spot.owner)

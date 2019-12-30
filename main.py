@@ -14,13 +14,14 @@ def read_board(board_file):
 def run_game():
     board = read_board("board_state.csv")
     print(board)
-    #next, initialize players and set positions
+    p1 = Player()
+    p2 = Player()
+    p3 = Player()
+    players = [p1, p2, p3]
+    #next, initialize players and set position
+    for turn in range(0, 20):
+        for current_player in players:
+            print(current_player + "'s turn'")
 
-    char = Character()
-    other_char = Character()
-    print(board[char.location])
-    char.move(char.roll())
-    print(board[char.location])
-    #char.pay(1501,other_char)
 
 run_game()
