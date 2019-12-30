@@ -75,7 +75,6 @@ class Player:
         go_passes = max(new_location // BOARD_SIZE, 0)
         self.money += GO_PASS_MONEY * go_passes
         self.location = new_location % BOARD_SIZE
-        print(self.location)
 
     def purchase_property(self, property):
         if self.money < property.price:
@@ -102,7 +101,7 @@ class Player:
                 if player_response != 'n':
                     self.purchase_property(spot)
             else:
-                pay(spot.calculate_rent(self.last_roll), spot.owner)
+                pay(spot.calculate_rent(self.last_roll), self, spot.owner)
         else:
             print(spot.tile_type, spot.name)
 
