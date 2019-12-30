@@ -1,4 +1,15 @@
 import csv
+from ClassDefinitions import *
+
+
+
+char = Character()
+other_char = Character()
+for i in range(20):
+    char.move(char.roll())
+#char.pay(1501,other_char)
+print("Would you like to buy %s for $%d" % ("hi", 2))
+
 
 class Tile:
     row_array_order = ["location", "name", "tile_type", "monopoly_group", "price", "rent0", "rent1", "rent2", "rent3", "rent4", "rent5", "mortgage_value", "house_cost", "currently_monopolied"] #the order that the properties occur in the spreadsheet row
