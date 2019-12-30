@@ -3,6 +3,7 @@ import random
 DEF_NUM_DICE = 2
 DEF_SIZE_DICE = 6
 BOARD_SIZE = 40
+GO_PASS_MONEY = 200
 
 class MyExcept(Exception):
     def __init__(self, value):
@@ -27,7 +28,10 @@ class Character:
         return sum
 
     def move(self, roll_value):
-        self.location = (self.location + roll_value) % BOARD_SIZE
+        new_location = self.location + roll_value #but this could be over the size of the board
+        go_passes = new_location // BOARD_SIZE
+        self.money += GO_PASS_MONEY * go_passes
+        self.location = new_location % BOARD_SIZE
         print(self.location)
 
     def pay(self, amount, recipient):
