@@ -12,22 +12,27 @@ class MyExcept(Exception):
         return repr(self.value)
 
 class Player:
-    def __init__(self, location=0, money=1500, deeds=[], num_doubles=0, time_in_jail=0, last_roll=0):
+    num_players = 0
+
+    def __init__(self, location=0, name=num_players, money=1500, deeds=[], num_doubles=0, time_in_jail=0, last_roll=0):
+        self.name = name
         self.location = location
         self.money = money
         self.deeds = deeds
         self.num_doubles = num_doubles #Keeps track of num of consecutive doubles
         self.time_in_jail = time_in_jail
         self.last_roll = last_roll
+        num_players += 1
 
     def __repr__(self):
         return ("Player object with " +
-                "Location: {}, " +
-                "Money: {}, " +
-                "Deeds: {}, " +
-                "Num_doubles: {}, " +
-                "Time_in_jail: {}, " +
-                "Last_roll: {}").format(self.location, self.money, self.deeds, self.num_doubles, self.time_in_jail, self.last_roll)
+                "name: {}" +
+                "location: {}, " +
+                "money: {}, " +
+                "deeds: {}, " +
+                "num_doubles: {}, " +
+                "time_in_jail: {}, " +
+                "last_roll: {}").format(self.name, self.location, self.money, self.deeds, self.num_doubles, self.time_in_jail, self.last_roll)
 
     def roll(self, num_dice=DEF_NUM_DICE, size_dice=DEF_SIZE_DICE):
         sum = 0
@@ -42,13 +47,6 @@ class Player:
         self.money += GO_PASS_MONEY * go_passes
         self.location = new_location % BOARD_SIZE
         print(self.location)
-
-    def pay(self, amount, recipient):
-        if self.money < amount:
-            print ("notenoughdollabills payfunc")
-            raise MyExcept("Not enough dolla dolla payfunc")
-        self.money -= amount
-        recipient.money += amount
 
     def purchase_property(self, property):
         if self.money < property.price:
@@ -73,6 +71,12 @@ class Player:
         else:
             print(spot.tile_type, spot.name)
 
+def pay(amount, sender, recipient): #function for players but outside class
+    if sender.money < amount:
+        print ("notenoughdollabills payfunc")
+        raise MyExcept("Not enough dolla dolla payfunc")
+    sender.money -= amount
+    recipient.money += amount
 
     #The structure of a turn:
     #trade or purchases
