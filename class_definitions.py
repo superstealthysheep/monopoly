@@ -63,6 +63,9 @@ class Player:
                 "time_in_jail: {}, " +
                 "last_roll: {}").format(self.name, self.location, self.money, self.deeds, self.num_doubles, self.time_in_jail, self.last_roll)
 
+    def __str__(self):
+        return self.name
+
     def roll(self, num_dice=DEF_NUM_DICE, size_dice=DEF_SIZE_DICE):
         sum = 0
         for i in range(num_dice):
@@ -96,7 +99,6 @@ class Player:
         spot = board[self.location]
         if spot.tile_type != 0:
             if spot.owner == -1:
-                print("aaa")
                 player_response = input("Would you like to buy {} for ${}? (Y/n) ".format(spot.name, spot.price))
                 if player_response.lower() != 'n':
                     self.purchase_property(spot)
