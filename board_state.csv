@@ -11,7 +11,7 @@ Location,Name,TileType,MonopolyGroup,CurrentOwner,Price,RentLevel,Rent0,Rent1,Re
 9,Connecticut Avenue,1,Light blue,-1,120,0,8,40,100,300,450,600,60,50,0
 10,Jail,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
 11,St. Charles Place,1,Pink,-1,140,0,10,50,150,450,625,750,70,100,0
-12,Electric Company,3,Utility,-1,150,0,-1,-1,-1,-1,-1,-1,75,-1,0
+12,Electric Company,3,Utility,-1,150,0,4,10,-1,-1,-1,-1,75,-1,0
 13,States Avenue,1,Pink,-1,140,0,10,50,150,450,625,750,70,100,0
 14,Virginia Avenue,1,Pink,-1,160,0,12,60,180,500,700,900,80,100,0
 15,Pennsylavnia Railroad,2,Railroad,-1,200,0,25,50,100,200,-1,-1,100,-1,0
@@ -27,7 +27,7 @@ Location,Name,TileType,MonopolyGroup,CurrentOwner,Price,RentLevel,Rent0,Rent1,Re
 25,B.&O. Railroad,2,Railroad,-1,200,0,25,50,100,200,-1,-1,100,-1,0
 26,Atlantic Avenue,1,Yellow,-1,260,0,22,110,330,800,975,1150,130,150,0
 27,Ventnor Avenue,1,Yellow,-1,260,0,22,110,330,800,975,1150,130,150,0
-28,Water Works,3,Utility,-1,150,0,-1,-1,-1,-1,-1,-1,75,-1,0
+28,Water Works,3,Utility,-1,150,0,4,10,-1,-1,-1,-1,75,-1,0
 29,Marvin Gardens,1,Yellow,-1,280,0,24,120,360,850,1025,1200,140,150,0
 30,Go To Jail,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
 31,Pacific Avenue,1,Green,-1,300,0,26,130,390,900,1100,1275,150,200,0
