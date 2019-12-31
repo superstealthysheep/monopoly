@@ -76,8 +76,11 @@ class Player:
     def move(self, roll_value):
         new_location = self.location + roll_value #but this could be over the size of the board
         go_passes = max(new_location // BOARD_SIZE, 0)
-        self.money += GO_PASS_MONEY * go_passes
+        money_gained = GO_PASS_MONEY * go_passes
+        self.money += money_gained
         self.location = new_location % BOARD_SIZE
+        if go_passes != 0:
+            print("{} passed go and gained ${}".format(self.name, money_gained))
 
     def purchase_property(self, property):
         if self.money < property.price:
@@ -103,9 +106,11 @@ class Player:
                 if player_response.lower() != 'n':
                     self.purchase_property(spot)
             else:
-                pay(spot.calculate_rent(self.last_roll), self, spot.owner)
-        else:
-            print(spot.tile_type, spot.name)
+                rent = spot.calculate_rent(self.last_roll)
+                pay(rent, self, spot.owner)
+                print("{} paid ${} of rent to {}".format(self.name, rent, spot.owner))
+        #else:
+            #print(spot.tile_type, spot.name)
 
 def pay(amount, sender, recipient): #function for players but outside class
     if sender.money < amount:
