@@ -12,20 +12,25 @@ def read_board(board_file):
     return board
 
 def run_game():
+    #Setup
     board = read_board("board_state.csv")
-    print(board)
     p0 = Player()
     p1 = Player()
     p2 = Player()
-    t1 = Tile(70, "Bep Lane", 1, "Shrek green")
     players = [p0, p1, p2]
-    print(t1)
-    print(board[0])
+    for i in range(0, 3):
+        players.append(Player())
+
+    t1 = Tile(70, "Bep Lane", 1, "Shrek green")
+
+    print("MONOPOLY!")
     print(str(Player.num_players) + " players")
-    #next, initialize players and set position
-    for round in range(0, 1):
+
+    #Setup over. Game begins below
+    for round in range(0, 20):
+        print("=" * 50)
+        print("ROUND {}".format(round))
         for current_player in players:
-            print(str(current_player) + "'s turn'")
             current_player.move(current_player.roll())
             print("{} is at {}".format(current_player.name, board[current_player.location]))
             current_player.turn_dispatcher(board)
